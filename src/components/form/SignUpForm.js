@@ -21,13 +21,19 @@ const validators = {
         if (!value.length) {
             return 'This field is required';
         }
+        if (value.length < 6) {
+            return 'Must be at least 6 characters long';
+        }
+        if (value.toLowerCase() === value) {
+            return 'Must contain at least 1 upper case character';
+        }
     },
     passwordConfirmation: (value, values) => {
         if (values.password && !value) {
             return 'This field is required';
         }
         if (values.password !== value) {
-            return 'Passwords must match';
+            return 'Passwords do not match';
         }
     }
 };

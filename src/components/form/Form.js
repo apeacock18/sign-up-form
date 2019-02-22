@@ -54,22 +54,24 @@ const Form = ({ title, handleSubmit, formFields }) => {
     };
 
     return (
-        <form className="form" onSubmit={onSubmit}>
+        <div className="form__wrapper">
             <h2 id="signUp__header">{title}</h2>
-            {Object.entries(formFields).map(([id, props]) => (
-                <FormField
-                    key={id}
-                    id={id}
-                    value={values[id]}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                    handleFocus={handleFocus}
-                    {...props}
-                    error={errors[id]}
-                />
-            ))}
-            <button className={isSubmitting ? 'button__loading' : ''}>{!isSubmitting && 'Submit'}</button>
-        </form>
+            <form className="form" onSubmit={onSubmit}>
+                {Object.entries(formFields).map(([id, props]) => (
+                    <FormField
+                        key={id}
+                        id={id}
+                        value={values[id]}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}
+                        handleFocus={handleFocus}
+                        {...props}
+                        error={errors[id]}
+                    />
+                ))}
+                <button className={isSubmitting ? 'button__loading' : ''}>{!isSubmitting && 'Submit'}</button>
+            </form>
+        </div>
     );
 };
 
