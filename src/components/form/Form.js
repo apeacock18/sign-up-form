@@ -11,6 +11,8 @@ const Form = ({ title, handleSubmit, formFields }) => {
 
     const [errors, setErrors] = useState({});
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleChange = event => {
         setValues({ ...values, [event.target.id]: event.target.value });
     };
@@ -46,6 +48,7 @@ const Form = ({ title, handleSubmit, formFields }) => {
         setErrors(updatedErrors);
 
         if (!hasError) {
+            setIsSubmitting(true);
             handleSubmit(values);
         }
     };
@@ -65,7 +68,7 @@ const Form = ({ title, handleSubmit, formFields }) => {
                     error={errors[id]}
                 />
             ))}
-            <input type="submit" value="Submit" />
+            <button className={isSubmitting ? 'button__loading' : ''}>{!isSubmitting && 'Submit'}</button>
         </form>
     );
 };

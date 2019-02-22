@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import '../styles/SignUp.css';
 import ErrorBanner from './ErrorBanner';
-import SignUpForm from './SignUpForm';
+import SignUpForm from './form/SignUpForm';
 import { requestSignUp } from '../api.js';
 
 class SignUp extends Component {
@@ -18,7 +17,7 @@ class SignUp extends Component {
         if (response.error) {
             this.setState({ error: response.error });
         } else {
-            console.log('success!');
+            this.props.handleSignInSuccess();
         }
     };
 

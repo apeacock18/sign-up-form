@@ -11,7 +11,7 @@ const validators = {
     lastName: () => {},
     email: value => {
         if (!value.length) {
-            return 'Email must not be empty';
+            return 'This field is required';
         }
         if (!validateEmail(value)) {
             return 'Email must be valid';
@@ -19,12 +19,12 @@ const validators = {
     },
     password: value => {
         if (!value.length) {
-            return 'Password must not be empty';
+            return 'This field is required';
         }
     },
     passwordConfirmation: (value, values) => {
         if (values.password && !value) {
-            return 'Please retype your password';
+            return 'This field is required';
         }
         if (values.password !== value) {
             return 'Passwords must match';

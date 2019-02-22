@@ -1,8 +1,8 @@
 import React from 'react';
 
 const FormField = ({ id, labelText, type, handleChange, handleBlur, handleFocus, value, error, optional }) => (
-    <label className={'formField__label' + (error ? ' error' : '')} htmlFor={id}>
-        {error || labelText}
+    <label className="formField__label" htmlFor={id}>
+        {labelText}
 
         <input
             className={'formField__input' + (error ? ' errorBorder' : '')}
@@ -14,9 +14,9 @@ const FormField = ({ id, labelText, type, handleChange, handleBlur, handleFocus,
             onBlur={handleBlur}
             onFocus={handleFocus}
         />
-        <span className={'formField__requiredLabel'} htmlFor={id}>
-            {!optional && !value ? 'required' : ' '}
-        </span>
+        <div className={'formField__error'} htmlFor={id}>
+            {error || ''}
+        </div>
     </label>
 );
 
